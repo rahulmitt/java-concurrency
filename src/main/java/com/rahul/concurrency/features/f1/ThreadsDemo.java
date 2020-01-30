@@ -5,15 +5,16 @@ import com.rahul.concurrency.util.ThreadUtility;
 public class ThreadsDemo {
     public static void main(String[] args) {
         new Thread(
-                () -> System.out.println("Hello World from thread: [" + Thread.currentThread().getName() + "]")
+                () -> ThreadUtility.print("Hello World from thread")
         ).start();
 
         Thread t1 = new Thread(
                 () -> {
                     while (!Thread.currentThread().isInterrupted()) {
-                        System.out.println("********** I am not interrupted yet: [" + Thread.currentThread().getName() + "]");
+                        ThreadUtility.print("********** I am not interrupted yet");
                     }
-                    System.out.println("interrupted! [" + Thread.currentThread().getName() + "]");
+
+                    ThreadUtility.print("interrupted!");
                 }
         );
 
@@ -22,6 +23,6 @@ public class ThreadsDemo {
         t1.interrupt();
 
         ThreadUtility.sleep(1000);
-        System.out.println("Exiting main thread: [" + Thread.currentThread().getName() + "]");
+        ThreadUtility.print("Exiting main thread");
     }
 }

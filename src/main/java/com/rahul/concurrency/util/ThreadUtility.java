@@ -9,4 +9,8 @@ public class ThreadUtility {
             e.printStackTrace();
         }
     }
+
+    public static void print(String message) {
+        System.out.println(String.format("%s :: [%s]", message, Thread.currentThread().getName()));
+    }
 }
